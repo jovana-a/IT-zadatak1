@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Inventory Collector</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
 </head>
 <body>
     <h2>Inventory Collector</h2>
@@ -20,6 +21,8 @@
             <th>Serial Number</th>
         </tr>
     </table>
+    <br>
+    <button onclick="saveToExcel()">Save to Excel</button>
 
     <script>
         function addToInventory() {
@@ -39,6 +42,12 @@
 
             // Clear the form fields
             document.getElementById('inventoryForm').reset();
+        }
+
+        function saveToExcel() {
+            var table = document.getElementById('inventoryTable');
+            var workbook = XLSX.utils.table_to_book(table, {sheet: "Inventory"});
+            XLSX.writeFile(workbook, 'inventory.xlsx');
         }
     </script>
 </body>
