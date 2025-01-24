@@ -1,7 +1,45 @@
-<h1>Introduction to Front-end development</h1>
-<p1>A front-end developer architects and develops websites and applications using web technologies(languages):</p>
-<ul>
-<li style="color: red;">HTML</li>
-<li style="color: green;">CSS</li>
-<li style="color: blue;">JavaScript</li>
-</ul>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventory Collector</title>
+</head>
+<body>
+    <h2>Inventory Collector</h2>
+    <form id="inventoryForm">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required><br><br>
+        <label for="serialNumber">Serial Number:</label>
+        <input type="text" id="serialNumber" name="serialNumber" required><br><br>
+        <button type="button" onclick="addToInventory()">Add to Inventory</button>
+    </form>
+
+    <h3>Inventory List</h3>
+    <table id="inventoryTable" border="1">
+        <tr>
+            <th>Product Name</th>
+            <th>Serial Number</th>
+        </tr>
+    </table>
+
+    <script>
+        function addToInventory() {
+            // Get the values from the form
+            var productName = document.getElementById('productName').value;
+            var serialNumber = document.getElementById('serialNumber').value;
+
+            // Create a new row and cells
+            var table = document.getElementById('inventoryTable');
+            var newRow = table.insertRow();
+            var productNameCell = newRow.insertCell(0);
+            var serialNumberCell = newRow.insertCell(1);
+
+            // Add the values to the cells
+            productNameCell.innerHTML = productName;
+            serialNumberCell.innerHTML = serialNumber;
+
+            // Clear the form fields
+            document.getElementById('inventoryForm').reset();
+        }
+    </script>
+</body>
+</html>
